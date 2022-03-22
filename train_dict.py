@@ -80,7 +80,7 @@ def record_data(word_list):
 
 
 def analysis_text(src):
-    with open(src, 'r') as fs:
+    with open(src, 'r', encoding="utf-8") as fs:
         word_cnt_list = [1]
         for line in fs:
             #replace all symbol by ' '
