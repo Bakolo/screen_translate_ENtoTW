@@ -71,13 +71,23 @@ def record_data(word_list):
     with open('word_cnt.txt', 'w') as fw:
         for word in word_list:
             if word in range(1,100):
-                fw.write(f'\n{word} times:\n')
-                print(f'\n{word} times:\n')
+                fw.write(f'\n\n{word} times:\n')
+                print(f'\n\n{word} times:\n')
             else:
-                fw.write(f'  {word}')
-                print(f' {word}', end="")
+                fw.write(f'\t{word}')
+                print(f'\t{word}', end="")
     print('\n')
 
+
+def word_filter(word):
+    #filter some word are not necessary
+    #1. the word length too short
+    if len(word) < 3:
+        return True
+    #2. http link
+    elif word.startswith('http'):
+        return True
+    return False
 
 def analysis_text(src):
     with open(src, 'r', encoding="utf-8") as fs:
@@ -87,7 +97,7 @@ def analysis_text(src):
             lower_split = re.sub(r'[^\w]', ' ', line.lower()).split()
             #count each word 
             for word in lower_split:
-                if len(word) < 3:   #filter the word length less than 3
+                if word_filter(word):   #filter the word length less than 3
                     continue
                 #find the position of word in word_cnt_list
                 try:
