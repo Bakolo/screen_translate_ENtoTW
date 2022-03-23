@@ -38,16 +38,17 @@ def load_trans_script():
     #data = json_operator.load_json("trans_script.json")
     data = dict()
     en_file_list = [f for f in os.listdir(tdict.dict_folder) if 'en' in f]
-    tw_file_list = [f for f in os.listdir(tdict.dict_folder) if 'tw' in f]
+    #tw_file_list = [f for f in os.listdir(tdict.dict_folder) if 'tw' in f]
     
     print("Load the dictionary source file:")
     print(f"en file: {en_file_list}")
-    print(f"tw file: {tw_file_list}")
+    #print(f"tw file: {tw_file_list}")
     for en_file in en_file_list:
-        sub_name = en_file.split('_',1)[1]
-        tw_file = f"tw_{sub_name}"
-        if tw_file not in tw_file_list:
+        tw_file = el_file.replace('en',"tw")
+        if os.path.exists(f"{tdict.dict_folder}/{tw_file}")
             continue
+        #if tw_file not in tw_file_list:
+        #    continue
         f_en = open(f"{tdict.dict_folder}/{en_file}",'r')
         f_tw = open(f"{tdict.dict_folder}/{tw_file}",'r', encoding="utf-8")
         for line in f_en:
