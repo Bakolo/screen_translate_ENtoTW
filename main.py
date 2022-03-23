@@ -44,8 +44,8 @@ def load_trans_script():
     print(f"en file: {en_file_list}")
     #print(f"tw file: {tw_file_list}")
     for en_file in en_file_list:
-        tw_file = el_file.replace('en',"tw")
-        if os.path.exists(f"{tdict.dict_folder}/{tw_file}")
+        tw_file = en_file.replace('en',"tw")
+        if os.path.exists(f"{tdict.dict_folder}/{tw_file}"):
             continue
         #if tw_file not in tw_file_list:
         #    continue
