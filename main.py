@@ -24,14 +24,14 @@ def translate_text(text_in):
     #data = " ".join(data)
     data = ""
     for ch in trans_src.split():
-        data += f"{ch} " if ch not in lang_dict else f"{ch}({lang_dict[ch]}) "
+        data += f"{ch} " if ch not in lang_dict else f"{ch}(\33[92m{lang_dict[ch]}\33[0m) "
 
     #print(">--original start---------------------")
     #print(text_in)
     #print(">--original start---------------------")
     #print(trans_src)
     #print(">--translate start---------------------")
-    print("$: "+data)
+    print("\n$: "+data)
     #print(">--translate end---------------------")
 
 def load_trans_script():
@@ -45,8 +45,10 @@ def load_trans_script():
     #print(f"tw file: {tw_file_list}")
     for en_file in en_file_list:
         tw_file = en_file.replace('en',"tw")
-        if os.path.exists(f"{tdict.dict_folder}/{tw_file}"):
+        print(tdict.dict_folder, tw_file)
+        if not os.path.exists(f"{tdict.dict_folder}/{tw_file}"):
             continue
+        print(f"tw file: {tw_file}")
         #if tw_file not in tw_file_list:
         #    continue
         f_en = open(f"{tdict.dict_folder}/{en_file}",'r')
